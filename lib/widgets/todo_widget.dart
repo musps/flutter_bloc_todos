@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_demo/blocs/todos/todos.dart';
 import 'package:flutter_bloc_demo/models/todo_model.dart';
 
 class TodoWidget extends StatelessWidget {
@@ -8,15 +10,22 @@ class TodoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Text(
-        '${todo.id}',
-        style: TextStyle(fontSize: 10.0),
-      ),
-      title: Text(todo.title),
-      isThreeLine: true,
-      subtitle: Text(todo.body),
-      dense: true,
-    );
+    return InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed('/todo/add', arguments: {
+            'uuid': todo.id,
+          });
+        },
+        child: ListTile(
+          trailing: InkWell(
+            child: Icon(Icons.delete),
+            onTap: () =>
+                BlocProvider.of<TodosBloc>(context).add(TodoDelete(todo.id)),
+          ),
+          title: Text(todo.title),
+          isThreeLine: true,
+          subtitle: Text(todo.id),
+          dense: true,
+        ));
   }
 }

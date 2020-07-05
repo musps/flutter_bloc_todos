@@ -13,7 +13,7 @@ class AddEditScreen extends StatefulWidget {
 
 class _AddEditScreenState extends State<AddEditScreen> {
   TodosBloc _todosBloc;
-
+  Map _arguments;
   final _title = TextEditingController();
   final _body = TextEditingController();
 
@@ -21,6 +21,9 @@ class _AddEditScreenState extends State<AddEditScreen> {
   void initState() {
     super.initState();
     _todosBloc = BlocProvider.of<TodosBloc>(context);
+    _arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    print(_arguments);
   }
 
   void _onSave() {

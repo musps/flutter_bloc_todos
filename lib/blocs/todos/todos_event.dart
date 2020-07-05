@@ -8,6 +8,11 @@ abstract class TodosEvent extends Equatable {
 
 class TodosFetched extends TodosEvent {}
 
+class TodoDelete extends TodosEvent {
+  final String uuid;
+  TodoDelete(this.uuid);
+}
+
 class TodoAdd extends TodosEvent {
   final Todo todo;
 
