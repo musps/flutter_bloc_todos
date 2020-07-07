@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_bloc_demo/blocs/todos/todos.dart';
 import 'package:flutter_bloc_demo/models/todo_model.dart';
+import 'package:flutter_bloc_demo/mock_data.dart';
 
 class TodosBloc extends Bloc<TodosEvent, TodosState> {
   TodosBloc() : super(TodosInitial());
@@ -17,15 +18,15 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
       yield* _mapTodoAddedToState(event);
     } else if (event is TodoDelete) {
       yield* _mapTodoDeletedToState(event);
+    } else if (event is TodoUpdate) {
+      yield* _mapTodoUpdateToState(event);
+    } else if (event is TodoToggleState) {
+      yield* _mapTodoToggleStateToState(event);
     }
   }
 
   Stream<TodosState> _mapTodosLoadedToState() async* {
-    var uuid = Uuid();
-    yield TodosSuccess(items: [
-      new Todo(id: uuid.v4(), title: 'default 1', body: 'default 1'),
-      new Todo(id: uuid.v4(), title: 'default 2', body: 'default 2'),
-    ]);
+    yield TodosSuccess(items: []);
   }
 
   Stream<TodosState> _mapTodoAddedToState(TodoAdd event) async* {
@@ -46,5 +47,30 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
     updatedTodos.removeWhere((todo) => todo.id == uuid);
 
     yield TodosSuccess(items: updatedTodos);
+  }
+
+  Stream<TodosState> _mapTodoUpdateToState(TodoUpdate event) async* {
+    if (state is TodosSuccess) {
+      final List<Todo> updatedTodos = (state as TodosSuccess).props.map((todo) {
+        if (todo.id == event.todo.id) {
+          return event.todo;
+        }
+        return todo;
+      }).toList();
+
+      yield TodosSuccess(items: updatedTodos);
+    }
+  }
+
+  Stream<TodosState> _mapTodoToggleStateToState(TodoToggleState event) async* {
+    if (state is TodosSuccess) {
+      final List<Todo> updatedTodos = (state as TodosSuccess).props.map((todo) {
+        if (todo.id == event.todo.id) {
+          todo.state = event.todo.state;
+        }
+        return todo;
+      }).toList();
+      yield TodosSuccess(items: updatedTodos);
+    }
   }
 }

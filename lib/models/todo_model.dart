@@ -1,16 +1,17 @@
-import 'package:equatable/equatable.dart';
-
-class Todo extends Equatable {
+class Todo {
   String _id;
   String _title;
   String _body;
+  bool _state = false;
 
-  Todo({String id, String title, String body}) {
+  Todo({String id, String title, String body, bool state}) {
     _id = id ?? null;
     _title = title ?? '';
     _body = body ?? '';
+    _state = state ?? _state;
   }
-  Todo.prepare(this._id, this._title, this._body);
+
+  Todo.prepare(this._id, this._title, this._body, this._state);
 
   String get body => _body;
 
@@ -28,6 +29,12 @@ class Todo extends Equatable {
 
   set id(String value) {
     _id = value;
+  }
+
+  bool get state => _state;
+
+  set state(bool value) {
+    _state = value;
   }
 
   @override

@@ -1,16 +1,7 @@
-# flutter_bloc_demo
+# Demo project with flutter & bloc
 
-A new Flutter application.
+## Demo
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[screen_home_empty]: https://raw.githubusercontent.com/musps/flutter_bloc_todos/master/docs/images/home-empty.png
+[screen_home_with_items]: https://raw.githubusercontent.com/musps/flutter_bloc_todos/master/docs/images/home-with-items.png
+[screen_edit]: https://raw.githubusercontent.com/musps/flutter_bloc_todos/master/docs/images/edit.png

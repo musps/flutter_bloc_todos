@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc_demo/models/todo_model.dart';
 
-abstract class TodosState extends Equatable {
+abstract class TodosState {
   const TodosState();
 
   @override
@@ -15,15 +14,7 @@ class TodosFailure extends TodosState {}
 class TodosSuccess extends TodosState {
   final List<Todo> items;
 
-  const TodosSuccess({this.items});
-
-  TodosSuccess copyWith({
-    List<Todo> items,
-  }) {
-    return TodosSuccess(
-      items: items ?? this.items,
-    );
-  }
+  const TodosSuccess({this.items = const []});
 
   @override
   List<Todo> get props => items;

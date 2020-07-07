@@ -23,11 +23,9 @@ class FlutterBlocDemo extends StatelessWidget {
             ),
             initialRoute: '/',
             routes: {
-              '/': (context) => HomeScreen(title: 'Todos - Home'),
-              '/todo/add': (context) =>
-                  AddEditScreen(title: 'Todos - Add todo'),
-              '/todo/update/:uuid': (context) =>
-                  AddEditScreen(title: 'Todos - Update todo'),
+              '/': (context) => HomeScreen(),
+              '/todo/add': (context) => AddEditScreen(),
+              '/todo/update': (context) => AddEditScreen(),
             }));
   }
 }
