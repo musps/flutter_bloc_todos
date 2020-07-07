@@ -1,6 +1,10 @@
 
 # Demo project with flutter & bloc
 
+## Features :
+
+- Swap right to left to delete an item
+
 ## Demo
 
 | Home | Home | Handler page |
