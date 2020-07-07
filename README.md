@@ -4,6 +4,7 @@
 ## Features :
 
 - Swap right to left to delete an item.
+- Click on the card to edit an item.
 - Click "In progress" or "Done" to toggle the state from the main list.
 
 ## Demo
