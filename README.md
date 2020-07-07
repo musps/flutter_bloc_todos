@@ -1,9 +1,10 @@
 
-# Demo project with flutter & bloc
+# Demo project flutter & bloc
 
 ## Features :
 
-- Swap right to left to delete an item
+- Swap right to left to delete an item.
+- Click "In progress" or "Done" to toggle the state from the main list.
 
 ## Demo
 
